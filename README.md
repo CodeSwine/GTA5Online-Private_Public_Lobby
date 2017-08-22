@@ -9,12 +9,12 @@ A tool to setup your GTA5 firewall rules easily. Adding IPs to your whitelist en
 
 ## How-to (SOLO lobby):
 1. Start the program as admin with Windows firewall enabled.
-2. Click "Enable Rules".
+2. Click "Activate Rules".
 3. Join GTA online.
 
 ## How-to (Friends lobby):
 1. Start the program as admin with Windows firewall enabled.
-2. Click "Enable Rules".
+2. Click "Activate Rules".
 3. Join GTA online.
-4. Click "Disable Rules" and invite your friends.
-5. If they're all there click "Enable rules" again.
+4. Click "Deactivate Rules" and invite your friends.
+5. If they're all there click "Activate rules" again.
