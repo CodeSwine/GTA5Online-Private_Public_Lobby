@@ -18,3 +18,5 @@ A tool to setup your GTA5 firewall rules easily. Adding IPs to your whitelist en
 3. Join GTA online.
 4. Click "Deactivate Rules" and invite your friends.
 5. If they're all there click "Activate rules" again.
+
+Note: you don't need to add your own IP Address. Previous rules are deleted at startup.
