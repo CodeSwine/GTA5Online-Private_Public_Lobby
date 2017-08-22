@@ -1,0 +1,98 @@
+﻿<Window x:Class="CodeSwine_Solo_Public_Lobby.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeSwine_Solo_Public_Lobby"
+        mc:Ignorable="d"
+        Title="GTA 5 Online: Private Public Lobby" Height="400" Width="923" ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="148*"/>
+            <ColumnDefinition Width="149*"/>
+            <ColumnDefinition Width="148*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="135*"/>
+            <RowDefinition Height="135*"/>
+            <RowDefinition Height="32*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Row 0 -->
+        <Label x:Name="lblYourIPAddress" Content="Your IP Address is:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="572" FontSize="24" Height="38" FontWeight="SemiBold" Foreground="#FF707C80" Grid.ColumnSpan="2"/>
+        <Border x:Name="brdYourIPAddress" BorderBrush="#FF707C80" BorderThickness="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="1" Margin="10,48,0,0" VerticalAlignment="Top" Width="888"/>
+
+        <!-- Row 1 & 2 -->
+        <Button x:Name="btnEnableDisable" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="276" Height="120" RenderTransformOrigin="0.5,0.5" Foreground="White" Background="#FFDC3545" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" FontWeight="SemiBold" BorderBrush="{x:Null}" Click="btnEnableDisable_Click">
+            <StackPanel Height="120" Width="273" Orientation="Horizontal">
+                <Label x:Name="lblLock" Content="Rules not active.&#xD;&#xA;Click to activate!" Width="193" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFF7F5F5"/>
+                <Image x:Name="image4" Width="100" Source="/CodeSwine-Solo_Public_Lobby;component/ImageResources/unlocked.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="25"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </StackPanel>
+        </Button>
+        <Label x:Name="lblInfo" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="276" Height="119" FontSize="18" BorderBrush="{x:Null}" Foreground="White" Background="#FF007BFF" FontWeight="SemiBold">
+            <StackPanel Height="119" Width="283" Orientation="Horizontal" Margin="0">
+                <Label x:Name="lblInstructions" Content="1. Activate the rules.&#xA;2. Join GTA online.&#xD;&#xA;3. Disable the rules.*&#xA;4. Invite your friends.*&#xA;5. Enable the rules.*&#xA;&#xD;&#xA;*Only when not playing solo." Width="173" VerticalContentAlignment="Center" Foreground="#FFFFFCFC" Margin="0,-10,0,0" FontSize="12"/>
+                <Image x:Name="image2" Width="142" Source="/CodeSwine-Solo_Public_Lobby;component/ImageResources/help.png" RenderTransformOrigin="0.5,0.5" Margin="0">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="25"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </StackPanel>
+        </Label>
+        <Label x:Name="lblWhitelist" HorizontalAlignment="Left" Margin="11,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="276" Height="38" Grid.Column="1" Foreground="White" BorderBrush="{x:Null}" FontSize="18" FontWeight="SemiBold" Background="#FFF16C20" RenderTransformOrigin="0.5,0.5">
+            <StackPanel Height="32" Width="269" Orientation="Horizontal">
+                <Label x:Name="lblAmountIPs" Content="0 IPs whitelisted!" Width="227" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#FFFFFEFE" Margin="0,-5,0,0"/>
+                <Image x:Name="image" Source="/CodeSwine-Solo_Public_Lobby;component/ImageResources/wireless.png" RenderTransformOrigin="0.5,0.5" Width="34" Margin="0,-11,0,-9">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="25"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </StackPanel>
+        </Label>
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="9,79,0,0" Grid.Row="1" VerticalAlignment="Top" Width="277" Height="50" Grid.Column="2" FontSize="18" BorderBrush="{x:Null}" Background="#FFFFC107" Foreground="#FFF7F7F7" FontWeight="SemiBold" Click="btnAdd_Click">
+            <StackPanel Height="33" Width="276" Orientation="Horizontal">
+                <Label x:Name="label1" Content="Add IP" Foreground="#FFF0F0F0" HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="213" HorizontalContentAlignment="Center"/>
+                <Image x:Name="image1" Source="/CodeSwine-Solo_Public_Lobby;component/ImageResources/add.png" Width="82" RenderTransformOrigin="0.5,0.5" Margin="0,4,0,0"/>
+            </StackPanel>
+        </Button>
+
+        <!-- Row 3 -->
+        <Label x:Name="lblCredits" Content="Made by CodeSwine." Grid.Column="2" HorizontalAlignment="Left" Margin="165,0,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="0.496,0.554" Width="123" Height="33" Foreground="#FF707C80"/>
+        <ListBox x:Name="lsbAddresses" Grid.Column="1" HorizontalAlignment="Left" Height="183" Margin="11,46,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="276"/>
+        <TextBox x:Name="txbIpToAdd" Grid.Column="2" HorizontalAlignment="Left" Height="72" Margin="10,9,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="192.0.0.1" Foreground="#FF707C80" FontWeight="Bold" FontSize="18"/>
+        <Button x:Name="btnDelete" Grid.Column="1" HorizontalAlignment="Left" Margin="10,88,0,0" Grid.Row="2" VerticalAlignment="Top" Width="277" Height="40" BorderBrush="{x:Null}" FontSize="18" Foreground="#FFFDFDFD" Background="#FFDC3545" Click="btnDelete_Click">
+            <StackPanel Height="40" Width="273" Orientation="Horizontal">
+                <Image x:Name="image3" Width="38" Source="ImageResources/trash.png" Margin="0,4,0,8"/>
+                <Label x:Name="label" Content="Delete selected IP." Foreground="#FFFFFCFC" FontWeight="SemiBold"/>
+            </StackPanel>
+        </Button>
+        <Border BorderBrush="#FFABADB3" BorderThickness="1" Grid.Column="2" HorizontalAlignment="Left" Height="132" Margin="9,2,0,0" Grid.Row="2" VerticalAlignment="Top" Width="277"/>
+        <Image x:Name="image5" Grid.Column="2" HorizontalAlignment="Left" Height="41" Margin="14,91,0,0" Grid.Row="2" VerticalAlignment="Top" Width="41" Source="ImageResources/Github.png"/>
+        <Label x:Name="label2" Content="github.com/CodeSwine" Grid.Column="2" HorizontalAlignment="Left" Margin="55,102,0,0" Grid.Row="2" VerticalAlignment="Top" Width="226" Foreground="#FF707C80"/>
+        <Image x:Name="image6" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="14,53,0,0" Grid.Row="2" VerticalAlignment="Top" Width="42" Source="ImageResources/mpgh.PNG"/>
+        <Label x:Name="label2_Copy" Content="forum/member.php?u=4577569" Grid.Column="2" HorizontalAlignment="Left" Margin="55,58,0,0" Grid.Row="2" VerticalAlignment="Top" Width="226" Foreground="#FF707C80"/>
+        <Image x:Name="image6_Copy" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="14,8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="42" Source="ImageResources/5mods.jpg"/>
+        <Label x:Name="label2_Copy1" Content="gta5-mods.com/users/CodeSwine" Grid.Column="2" HorizontalAlignment="Left" Margin="56,16,0,0" Grid.Row="2" VerticalAlignment="Top" Width="226" Foreground="#FF707C80"/>
+    </Grid>
+</Window>

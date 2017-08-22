@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeSwine-Private_Public_Lobby", "CodeSwine-Solo_Public_Lobby\CodeSwine-Private_Public_Lobby.csproj", "{8568F1E3-880F-4CAC-819D-40D1A4D3D863}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8568F1E3-880F-4CAC-819D-40D1A4D3D863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8568F1E3-880F-4CAC-819D-40D1A4D3D863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8568F1E3-880F-4CAC-819D-40D1A4D3D863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8568F1E3-880F-4CAC-819D-40D1A4D3D863}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5EAABC1-CA50-429B-A02A-A78AC5EED8F0}
+	EndGlobalSection
+EndGlobal
