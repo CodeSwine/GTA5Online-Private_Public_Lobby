@@ -4,7 +4,7 @@ A tool to setup your GTA5 firewall rules easily. Adding IPs to your whitelist en
 ![demo](https://i.imgur.com/t0F2Hfr.png)
 
 ## Setup:
-1. [Download the release and extract all files](https://github.com/CodeSwine/GTA5Online-Private_Public_Lobby/releases/download/1.0.0/CodeSwine.GTA5O.-.Private.Public.Lobby.V1.0.0.zip).
+1. [Download the release and extract all files](https://github.com/CodeSwine/GTA5Online-Private_Public_Lobby/releases/download/1.0.1/CodeSwine.GTA5O.-.Private.Public.Lobby.V1.0.1.zip).
 2. Inside the folder start the .EXE as administrator.
 
 ## How-to (SOLO lobby):
