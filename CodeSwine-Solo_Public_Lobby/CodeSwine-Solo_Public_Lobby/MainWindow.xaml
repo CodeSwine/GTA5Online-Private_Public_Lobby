@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodeSwine_Solo_Public_Lobby"
         mc:Ignorable="d"
-        Title="GTA 5 Online: Private Public Lobby" Height="400" Width="923" ResizeMode="NoResize">
+        Title="GTA 5 Online: Private Public Lobby" Height="400" Width="923" ResizeMode="CanMinimize">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -94,5 +94,6 @@
         <Label x:Name="label2_Copy" Content="forum/member.php?u=4577569" Grid.Column="2" HorizontalAlignment="Left" Margin="55,58,0,0" Grid.Row="2" VerticalAlignment="Top" Width="226" Foreground="#FF707C80"/>
         <Image x:Name="image6_Copy" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="14,8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="42" Source="ImageResources/5mods.jpg"/>
         <Label x:Name="label2_Copy1" Content="gta5-mods.com/users/CodeSwine" Grid.Column="2" HorizontalAlignment="Left" Margin="56,16,0,0" Grid.Row="2" VerticalAlignment="Top" Width="226" Foreground="#FF707C80"/>
+        <Label x:Name="label3" Content="Hotkey: CTRL+F10 to toggle." HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Top" Height="28" Width="276" FontWeight="Bold" Foreground="#FF707C80"/>
     </Grid>
 </Window>

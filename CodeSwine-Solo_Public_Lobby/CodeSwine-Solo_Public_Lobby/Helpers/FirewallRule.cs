@@ -38,8 +38,9 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
                     firewallPolicy.Rules.Add(firewallRule);
                 }
 
-            } catch(Exception e)
+            } catch (Exception e)
             {
+                ErrorLogger.LogException(e);
                 MessageBox.Show("Please start this program as administrator!");
             }
         }
@@ -84,7 +85,7 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
             }
             catch (Exception e)
             {
-                
+                ErrorLogger.LogException(e);
             }
         }
 
@@ -106,9 +107,9 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
                 firewallPolicy.Rules.Remove(firewallRuleOutbound.Name);
             } catch (Exception e)
             {
+                ErrorLogger.LogException(e);
                 MessageBox.Show("Run this program as administrator!");
             }
-
         }
     }
 }   

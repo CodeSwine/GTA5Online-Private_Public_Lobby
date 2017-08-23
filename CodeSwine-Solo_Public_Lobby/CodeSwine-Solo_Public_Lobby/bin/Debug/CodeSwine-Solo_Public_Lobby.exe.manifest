@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CodeSwine-Solo_Public_Lobby.exe" size="161776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CodeSwine-Solo_Public_Lobby.exe" size="163312">
       <assemblyIdentity name="CodeSwine-Solo_Public_Lobby" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YfbrIiNIkSCY9oSJXhfajX9JWvxB04Z/yVq5/I5r1Gs=</dsig:DigestValue>
+        <dsig:DigestValue>DaQVVdUJTX8s3VMONV9ebyqPlN1GNPmV/89nNDBNf9Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

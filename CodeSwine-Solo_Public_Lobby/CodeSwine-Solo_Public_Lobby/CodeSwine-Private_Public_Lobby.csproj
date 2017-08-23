@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="DataAccess\DaWhitelist.cs" />
     <Compile Include="Helpers\ColorBrush.cs" />
+    <Compile Include="Helpers\ErrorLogger.cs" />
     <Compile Include="Helpers\FirewallRule.cs" />
     <Compile Include="Helpers\IPTool.cs" />
     <Compile Include="Helpers\RangeCalculator.cs" />
