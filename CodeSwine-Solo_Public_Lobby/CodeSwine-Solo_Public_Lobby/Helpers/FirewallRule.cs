@@ -23,7 +23,7 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
                 firewallRule.Enabled = enabled;
                 firewallRule.InterfaceTypes = "All";
                 firewallRule.RemoteAddresses = addresses;
-                firewallRule.LocalPorts = "6672";
+                firewallRule.RemotePorts = "6672,61455,61457,61456,61458";
                 firewallRule.Name = "GTA5 CodeSwine - Private Public Lobby Outbound";
                 firewallRule.Direction = NET_FW_RULE_DIRECTION_.NET_FW_RULE_DIR_OUT;
                 INetFwPolicy2 firewallPolicy = (INetFwPolicy2)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FwPolicy2"));
@@ -68,7 +68,7 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
                 
                 Console.WriteLine(addresses);
 
-                firewallRule.LocalPorts = "6672";
+                firewallRule.LocalPorts = "6672,61455,61457,61456,61458";
                 firewallRule.Name = "GTA5 CodeSwine - Private Public Lobby Inbound";
                 firewallRule.Direction = NET_FW_RULE_DIRECTION_.NET_FW_RULE_DIR_IN;
                 INetFwPolicy2 firewallPolicy = (INetFwPolicy2)Activator.CreateInstance(Type.GetTypeFromProgID("HNetCfg.FwPolicy2"));
