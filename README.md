@@ -1,4 +1,8 @@
 # GTA5Online-Private_Public_Lobby
+[![Maintainers Wanted](https://img.shields.io/badge/maintainers-wanted-red.svg)](https://github.com/pickhardt/maintainers-wanted) 
+
+*Looking for someone who wants to keep this up to date.*
+
 A tool to setup your GTA5 firewall rules easily. Adding IPs to your whitelist enables your friends to stay in your session.
 
 ![demo](https://i.imgur.com/hZsO7xM.png)
