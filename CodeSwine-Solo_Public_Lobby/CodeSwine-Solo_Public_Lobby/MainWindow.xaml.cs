@@ -39,6 +39,7 @@ namespace CodeSwine_Solo_Public_Lobby
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            FirewallRule.lblAdmin = lblAdmin;
             Init();
         }
 

@@ -1,11 +1,14 @@
 ﻿using NetFwTypeLib;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace CodeSwine_Solo_Public_Lobby.Helpers
 {
     public class FirewallRule
     {
+        public static Label lblAdmin = null;
+
         /// <summary>
         /// Sets, Removes or Toggles CodeSwine Outbound firewall rules.
         /// </summary>
@@ -41,7 +44,10 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
             } catch (Exception e)
             {
                 ErrorLogger.LogException(e);
-                MessageBox.Show("Please start this program as administrator!");
+                if (lblAdmin != null)
+                    lblAdmin.Visibility = Visibility.Visible;
+                else
+                    MessageBox.Show("Please start this program as administrator!");
             }
         }
 
@@ -108,7 +114,10 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
             } catch (Exception e)
             {
                 ErrorLogger.LogException(e);
-                MessageBox.Show("Run this program as administrator!");
+                if (lblAdmin != null)
+                    lblAdmin.Visibility = Visibility.Visible;
+                else
+                    MessageBox.Show("Run this program as administrator!");
             }
         }
     }
