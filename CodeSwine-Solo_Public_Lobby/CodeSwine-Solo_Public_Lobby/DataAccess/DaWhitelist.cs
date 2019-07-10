@@ -27,7 +27,7 @@ namespace CodeSwine_Solo_Public_Lobby.DataAccess
                 MWhitelist whitelist = JsonConvert.DeserializeObject<MWhitelist>(json);
                 foreach (string address in whitelist.Ips)
                 {
-                    if (IPTool.ValidateIPv4(address.ToString())) addresses.Add(IPAddress.Parse(address));
+                    if (IPTool.ValidateIP(address.ToString())) addresses.Add(IPAddress.Parse(address));
                 }
             }
             return addresses;

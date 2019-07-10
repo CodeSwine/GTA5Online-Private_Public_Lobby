@@ -56,7 +56,7 @@ namespace CodeSwine_Solo_Public_Lobby
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(IPTool.ValidateIPv4(txbIpToAdd.Text))
+            if(IPTool.ValidateIP(txbIpToAdd.Text))
             {
                 if(!addresses.Contains(IPAddress.Parse(txbIpToAdd.Text)))
                 {
