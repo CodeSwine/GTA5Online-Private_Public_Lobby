@@ -45,12 +45,13 @@ namespace CodeSwine_Solo_Public_Lobby
         void Init()
         {
             lblYourIPAddress.Content += " " + iPTool.IpAddress + ".";
-            addresses = DaWhitelist.ReadIPsFromJSON();
-            lsbAddresses.ItemsSource = addresses;
-            foreach (IPAddress ip in addresses)
+            mWhitelist = DaWhitelist.ReadFromJSON();
+            foreach (string address in mWhitelist.Ips)
             {
-                mWhitelist.Ips.Add(ip.ToString());
+                if (IPTool.ValidateIPv4(address.ToString())) addresses.Add(IPAddress.Parse(address));
             }
+            lsbAddresses.ItemsSource = addresses;
+            chkLan.IsChecked = mWhitelist.AllowLanAccess;
             SetIpCount();
         }
 
@@ -61,13 +62,8 @@ namespace CodeSwine_Solo_Public_Lobby
                 if(!addresses.Contains(IPAddress.Parse(txbIpToAdd.Text)))
                 {
                     addresses.Add(IPAddress.Parse(txbIpToAdd.Text));
-                    lsbAddresses.Items.Refresh();
                     mWhitelist.Ips.Add(txbIpToAdd.Text);
-                    DaWhitelist.SaveToJson(mWhitelist);
-                    set = false; active = false;
-                    FirewallRule.DeleteRules();
-                    SetIpCount();
-                    UpdateNotActive();
+                    InvalidateRules();
                 }
             }
         }
@@ -78,12 +74,7 @@ namespace CodeSwine_Solo_Public_Lobby
             {
                 mWhitelist.Ips.Remove(lsbAddresses.SelectedItem.ToString());
                 addresses.Remove(IPAddress.Parse(lsbAddresses.SelectedItem.ToString()));
-                lsbAddresses.Items.Refresh();
-                DaWhitelist.SaveToJson(mWhitelist);
-                set = false; active = false;
-                FirewallRule.DeleteRules();
-                SetIpCount();
-                UpdateNotActive();
+                InvalidateRules();
             }
         }
 
@@ -99,7 +90,13 @@ namespace CodeSwine_Solo_Public_Lobby
 
         void SetRules()
         {
-            string remoteAddresses = RangeCalculator.GetRemoteAddresses(addresses);
+            var ips = new List<IPAddress>();
+            ips.AddRange(addresses);
+            if (mWhitelist.AllowLanAccess)
+            {
+                ips.AddRange(iPTool.LanIPAddresses);
+            }
+            string remoteAddresses = RangeCalculator.GetRemoteAddresses(ips);
 
             // If the firewall rules aren't set yet.
             if (!set)
@@ -218,6 +215,28 @@ namespace CodeSwine_Solo_Public_Lobby
         {
             SetRules();
             System.Media.SystemSounds.Hand.Play();
+        }
+
+        private void ChkLan_Checked(object sender, RoutedEventArgs e)
+        {
+            mWhitelist.AllowLanAccess = true;
+            InvalidateRules();
+        }
+
+        private void ChkLan_Unchecked(object sender, RoutedEventArgs e)
+        {
+            mWhitelist.AllowLanAccess = false;
+            InvalidateRules();
+        }
+
+        private void InvalidateRules()
+        {
+            lsbAddresses.Items.Refresh();
+            DaWhitelist.SaveToJson(mWhitelist);
+            set = false; active = false;
+            FirewallRule.DeleteRules();
+            SetIpCount();
+            UpdateNotActive();
         }
     }
 }

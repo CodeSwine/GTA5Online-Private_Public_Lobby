@@ -27,18 +27,18 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
             return BitConverter.ToUInt32(ip, 0);
         }
 
-        private static string Add(IPAddress address)
+        private static IPAddress Add(IPAddress address)
         {
             byte[] newBytes = new IPAddress(GetIntFromIp(address) + 1).GetAddressBytes();
             Array.Reverse(newBytes);
-            return new IPAddress(newBytes).ToString();
+            return new IPAddress(newBytes);
         }
 
-        private static string Substract(IPAddress address)
+        private static IPAddress Subtract(IPAddress address)
         {
             byte[] newBytes = new IPAddress(GetIntFromIp(address) - 1).GetAddressBytes();
             Array.Reverse(newBytes);
-            return new IPAddress(newBytes).ToString();
+            return new IPAddress(newBytes);
         }
 
         /// <summary>
@@ -49,13 +49,27 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
         {
             if (list.Count > 0)
             {
-                string scope = "1.1.1.1-";
-                foreach (IPAddress ip in list)
+                var scope = new StringBuilder("1.1.1.1-");
+                var isContiguous = false;
+                for (var i = 0; i < list.Count; i++)
                 {
-                    scope += Substract(ip) + "," + Add(ip) + "-";
+                    var ip = list[i];
+
+                    if (!isContiguous)
+                    {
+                        scope.Append(Subtract(ip));
+                        scope.Append(",");
+                    }
+                    isContiguous = i < list.Count - 1 && Add(ip).ToString() == list[i+1].ToString();
+
+                    if (!isContiguous)
+                    {
+                        scope.Append(Add(ip));
+                        scope.Append("-");
+                    }
                 }
-                scope += "255.255.255.254";
-                return scope;
+                scope.Append("255.255.255.254");
+                return scope.ToString();
             }
             return "";
         }

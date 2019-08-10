@@ -12,10 +12,8 @@ namespace CodeSwine_Solo_Public_Lobby.DataAccess
     {
         private static string path = AppDomain.CurrentDomain.BaseDirectory + "settings.json";
 
-        public static List<IPAddress> ReadIPsFromJSON()
+        public static MWhitelist ReadFromJSON()
         {
-            List<IPAddress> addresses = new List<IPAddress>();
-
             if(!File.Exists(path))
             {
                 SaveToJson(new MWhitelist());
@@ -24,13 +22,8 @@ namespace CodeSwine_Solo_Public_Lobby.DataAccess
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
-                MWhitelist whitelist = JsonConvert.DeserializeObject<MWhitelist>(json);
-                foreach (string address in whitelist.Ips)
-                {
-                    if (IPTool.ValidateIPv4(address.ToString())) addresses.Add(IPAddress.Parse(address));
-                }
+                return JsonConvert.DeserializeObject<MWhitelist>(json);
             }
-            return addresses;
         }
 
         public static void SaveToJson(MWhitelist whitelist)

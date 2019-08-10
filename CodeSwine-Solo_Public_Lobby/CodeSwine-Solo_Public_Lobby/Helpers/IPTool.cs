@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -62,6 +63,38 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
             byte tempForParsing;
 
             return splitValues.All(r => byte.TryParse(r, out tempForParsing));
+        }
+
+        public IEnumerable<IPAddress> LanIPAddresses
+        {
+            get
+            {
+                var result = new List<IPAddress>();
+                var lanIPAddress = GetLanIPAddress();
+                if (ValidateIPv4(lanIPAddress))
+                {
+                    var baseIP = string.Join(".", lanIPAddress.Split('.').Take(3));
+                    for (var i = 1; i < 255; i++)
+                    {
+                        result.Add(IPAddress.Parse(string.Format("{0}.{1}", baseIP, i)));
+                    }
+                }
+
+                return result;
+            }
+        }
+
+        private static string GetLanIPAddress()
+        {
+            var hostEntry = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ipAddress in hostEntry.AddressList)
+            {
+                if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ipAddress.ToString();
+                }
+            }
+            return string.Empty;
         }
     }
 }

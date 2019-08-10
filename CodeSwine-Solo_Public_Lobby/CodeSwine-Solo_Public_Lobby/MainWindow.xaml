@@ -70,17 +70,18 @@
                 </Image>
             </StackPanel>
         </Label>
-        <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="9,79,0,0" Grid.Row="1" VerticalAlignment="Top" Width="277" Height="50" Grid.Column="2" FontSize="18" BorderBrush="{x:Null}" Background="#FFFFC107" Foreground="#FFF7F7F7" FontWeight="SemiBold" Click="btnAdd_Click">
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="9,60,0,0" Grid.Row="1" VerticalAlignment="Top" Width="277" Height="40" Grid.Column="2" FontSize="18" BorderBrush="{x:Null}" Background="#FFFFC107" Foreground="#FFF7F7F7" FontWeight="SemiBold" Click="btnAdd_Click">
             <StackPanel Height="33" Width="276" Orientation="Horizontal">
                 <Label x:Name="label1" Content="Add IP" Foreground="#FFF0F0F0" HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="213" HorizontalContentAlignment="Center"/>
                 <Image x:Name="image1" Source="/CodeSwine-Solo_Public_Lobby;component/ImageResources/add.png" Width="82" RenderTransformOrigin="0.5,0.5" Margin="0,4,0,0"/>
             </StackPanel>
         </Button>
+        <CheckBox x:Name="chkLan" Margin="9,112,0,0" Grid.Row="1" Grid.Column="2" Checked="ChkLan_Checked" Unchecked="ChkLan_Unchecked">Allow LAN Access</CheckBox>
 
         <!-- Row 3 -->
         <Label x:Name="lblCredits" Content="Made by CodeSwine." Grid.Column="2" HorizontalAlignment="Left" Margin="165,0,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="0.496,0.554" Width="123" Height="33" Foreground="#FF707C80"/>
         <ListBox x:Name="lsbAddresses" Grid.Column="1" HorizontalAlignment="Left" Height="183" Margin="11,46,0,0" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top" Width="276"/>
-        <TextBox x:Name="txbIpToAdd" Grid.Column="2" HorizontalAlignment="Left" Height="72" Margin="10,9,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="192.0.0.1" Foreground="#FF707C80" FontWeight="Bold" FontSize="18"/>
+        <TextBox x:Name="txbIpToAdd" Grid.Column="2" HorizontalAlignment="Left" Height="50" Margin="10,9,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="192.0.0.1" Foreground="#FF707C80" FontWeight="Bold" FontSize="18"/>
         <Button x:Name="btnDelete" Grid.Column="1" HorizontalAlignment="Left" Margin="10,88,0,0" Grid.Row="2" VerticalAlignment="Top" Width="277" Height="40" BorderBrush="{x:Null}" FontSize="18" Foreground="#FFFDFDFD" Background="#FFDC3545" Click="btnDelete_Click">
             <StackPanel Height="40" Width="273" Orientation="Horizontal">
                 <Image x:Name="image3" Width="38" Source="ImageResources/trash.png" Margin="0,4,0,8"/>
