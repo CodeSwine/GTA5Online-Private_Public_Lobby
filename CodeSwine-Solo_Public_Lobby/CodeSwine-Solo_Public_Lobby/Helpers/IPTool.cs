@@ -30,7 +30,7 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
             string ip = "";
             try
             {
-                ip = new WebClient().DownloadString("http://ipv4.icanhazip.com");
+                ip = new WebClient().DownloadString("https://ipv6.icanhazip.com");
             }
             catch (Exception e)
             {
@@ -40,28 +40,27 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
             return ip;
         }
 
-        /// <summary>
-        /// Validates IP Address.
-        /// </summary>
-        /// <param name="ipString"></param>
-        /// <returns>Bool True or False.</returns>
-        public static bool ValidateIPv4(string ipString)
+        public static bool ValidateIP(string ipString)
         {
             if (String.IsNullOrWhiteSpace(ipString))
             {
                 return false;
             }
 
-            string[] splitValues = ipString.Split('.');
-
-            if (splitValues.Length != 4)
+            IPAddress address;
+            if (IPAddress.TryParse(ipString, out address))
             {
-                return false;
+                switch (address.AddressFamily)
+                {
+                    case System.Net.Sockets.AddressFamily.InterNetwork:
+                        // we have IPv4 
+                        return true;
+                    case System.Net.Sockets.AddressFamily.InterNetworkV6:
+                        // we have IPv6
+                        return true;
+                }
             }
-
-            byte tempForParsing;
-
-            return splitValues.All(r => byte.TryParse(r, out tempForParsing));
+            return false;
         }
     }
 }

@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <!-- Row 0 -->
-        <Label x:Name="lblYourIPAddress" Content="Your IP Address is:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="572" FontSize="24" Height="38" FontWeight="SemiBold" Foreground="#FF707C80" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblYourIPAddress" Content="Your IP Address is:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="897" FontSize="24" Height="38" FontWeight="SemiBold" Foreground="#FF707C80" Grid.ColumnSpan="3"/>
         <Border x:Name="brdYourIPAddress" BorderBrush="#FF707C80" BorderThickness="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="1" Margin="10,48,0,0" VerticalAlignment="Top" Width="888"/>
 
         <!-- Row 1 & 2 -->
@@ -95,5 +95,6 @@
         <Image x:Name="image6_Copy" Grid.Column="2" HorizontalAlignment="Left" Height="42" Margin="14,8,0,0" Grid.Row="2" VerticalAlignment="Top" Width="42" Source="ImageResources/5mods.jpg"/>
         <Label x:Name="label2_Copy1" Content="gta5-mods.com/users/CodeSwine" Grid.Column="2" HorizontalAlignment="Left" Margin="56,16,0,0" Grid.Row="2" VerticalAlignment="Top" Width="226" Foreground="#FF707C80"/>
         <Label x:Name="label3" Content="Hotkey: CTRL+F10 to toggle." HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Top" Height="28" Width="276" FontWeight="Bold" Foreground="#FF707C80"/>
+        <Label x:Name="lblAdmin" Content="Please start this program as administrator!" Foreground="Red" Visibility="Hidden" Grid.Column="1" HorizontalAlignment="Left" Margin="11,0,0,0" Grid.Row="3" VerticalAlignment="Top" RenderTransformOrigin="0.196,0.126"/>
     </Grid>
 </Window>
