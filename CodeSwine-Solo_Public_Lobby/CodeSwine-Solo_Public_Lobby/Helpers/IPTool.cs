@@ -27,6 +27,7 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
         private string GrabInternetAddress()
         {
             // Still needs check to see if we could retrieve the IP.
+            // Try for ipv6 first, but if that fails get ipv4
             string ip = "";
             try
             {
@@ -35,7 +36,16 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
             catch (Exception e)
             {
                 ErrorLogger.LogException(e);
-                ip = "IP not found.";
+
+                try
+                {
+                    ip = new WebClient().DownloadString("https://ipv4.icanhazip.com");
+                }
+                catch (Exception e2)
+                {
+                    ErrorLogger.LogException(e2);
+                    ip = "IP not found.";
+                }
             }
             return ip;
         }
