@@ -1,37 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace CodeSwine_Solo_Public_Lobby.Helpers
 {
     public class IPTool
     {
-        private string _ipAddress;
+        private HttpClient httpClient;
 
-        public string IpAddress 
+        public IPTool()
         {
-            get 
-            {
-                if (_ipAddress == null) _ipAddress = GrabInternetAddress();
-                return _ipAddress;
-            }
+            this.httpClient = new HttpClient();
         }
 
         /// <summary>
         /// Gets the hosts IP Address.
         /// </summary>
         /// <returns>String value of IP.</returns>
-        private string GrabInternetAddress()
+        public async Task<string> GrabInternetAddressAsync()
         {
             // Still needs check to see if we could retrieve the IP.
             // Try for ipv6 first, but if that fails get ipv4
-            string ip = "";
+            string ip;
             try
             {
-                ip = new WebClient().DownloadString("https://ipv6.icanhazip.com");
+                var response = await this.httpClient.GetAsync(new Uri("https://ipv6.icanhazip.com"));
+                ip = await response.Content.ReadAsStringAsync();
             }
             catch (Exception e)
             {
@@ -39,7 +34,8 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
 
                 try
                 {
-                    ip = new WebClient().DownloadString("https://ipv4.icanhazip.com");
+                    var response = await this.httpClient.GetAsync(new Uri("https://ipv4.icanhazip.com"));
+                    ip = await response.Content.ReadAsStringAsync();
                 }
                 catch (Exception e2)
                 {
@@ -52,7 +48,7 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
 
         public static bool ValidateIP(string ipString)
         {
-            if (String.IsNullOrWhiteSpace(ipString))
+            if (string.IsNullOrWhiteSpace(ipString))
             {
                 return false;
             }
@@ -63,8 +59,9 @@ namespace CodeSwine_Solo_Public_Lobby.Helpers
                 switch (address.AddressFamily)
                 {
                     case System.Net.Sockets.AddressFamily.InterNetwork:
-                        // we have IPv4 
+                        // we have IPv4
                         return true;
+
                     case System.Net.Sockets.AddressFamily.InterNetworkV6:
                         // we have IPv6
                         return true;
