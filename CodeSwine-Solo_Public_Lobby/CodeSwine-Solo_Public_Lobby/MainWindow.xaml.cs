@@ -6,25 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CodeSwine_Solo_Public_Lobby
 {
     public partial class MainWindow : Window
     {
         private IPTool iPTool = new IPTool();
-        private DaWhitelist whiteList = new DaWhitelist();
         private List<IPAddress> addresses = new List<IPAddress>();
         private MWhitelist mWhitelist = new MWhitelist();
 
@@ -37,15 +28,16 @@ namespace CodeSwine_Solo_Public_Lobby
             Loaded += MainWindow_Loaded;
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             FirewallRule.lblAdmin = lblAdmin;
-            Init();
+            await InitAsync();
         }
 
-        void Init()
+        private async Task InitAsync()
         {
-            lblYourIPAddress.Content += " " + iPTool.IpAddress + ".";
+            var ipAddress = await iPTool.GrabInternetAddressAsync();
+            lblYourIPAddress.Content += " " + ipAddress + ".";
             addresses = DaWhitelist.ReadIPsFromJSON();
             lsbAddresses.ItemsSource = addresses;
             foreach (IPAddress ip in addresses)
@@ -57,9 +49,9 @@ namespace CodeSwine_Solo_Public_Lobby
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            if(IPTool.ValidateIP(txbIpToAdd.Text))
+            if (IPTool.ValidateIP(txbIpToAdd.Text))
             {
-                if(!addresses.Contains(IPAddress.Parse(txbIpToAdd.Text)))
+                if (!addresses.Contains(IPAddress.Parse(txbIpToAdd.Text)))
                 {
                     addresses.Add(IPAddress.Parse(txbIpToAdd.Text));
                     lsbAddresses.Items.Refresh();
@@ -75,7 +67,7 @@ namespace CodeSwine_Solo_Public_Lobby
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if(lsbAddresses.SelectedIndex != -1)
+            if (lsbAddresses.SelectedIndex != -1)
             {
                 mWhitelist.Ips.Remove(lsbAddresses.SelectedItem.ToString());
                 addresses.Remove(IPAddress.Parse(lsbAddresses.SelectedItem.ToString()));
@@ -98,7 +90,7 @@ namespace CodeSwine_Solo_Public_Lobby
             SetRules();
         }
 
-        void SetRules()
+        private void SetRules()
         {
             string remoteAddresses = RangeCalculator.GetRemoteAddresses(addresses);
 
@@ -124,7 +116,7 @@ namespace CodeSwine_Solo_Public_Lobby
             }
 
             // If they are active and set.
-            if(active && set)
+            if (active && set)
             {
                 FirewallRule.CreateInbound(remoteAddresses, false, true);
                 FirewallRule.CreateOutbound(remoteAddresses, false, true);
@@ -133,14 +125,14 @@ namespace CodeSwine_Solo_Public_Lobby
             }
         }
 
-        void UpdateNotActive()
+        private void UpdateNotActive()
         {
             btnEnableDisable.Background = ColorBrush.Red;
             image4.Source = new BitmapImage(new Uri("/CodeSwine-Solo_Public_Lobby;component/ImageResources/unlocked.png", UriKind.Relative));
             lblLock.Content = "Rules not active." + Environment.NewLine + "Click to activate!";
         }
 
-        void UpdateActive()
+        private void UpdateActive()
         {
             btnEnableDisable.Background = ColorBrush.Green;
             image4.Source = new BitmapImage(new Uri("/CodeSwine-Solo_Public_Lobby;component/ImageResources/locked.png", UriKind.Relative));
@@ -148,7 +140,7 @@ namespace CodeSwine_Solo_Public_Lobby
         }
 
         [DllImport("User32.dll")]
-            private static extern bool RegisterHotKey(
+        private static extern bool RegisterHotKey(
         [In] IntPtr hWnd,
         [In] int id,
         [In] uint fsModifiers,
@@ -187,7 +179,6 @@ namespace CodeSwine_Solo_Public_Lobby
             const uint MOD_CTRL = 0x0002;
             if (!RegisterHotKey(helper.Handle, HOTKEY_ID, MOD_CTRL, VK_F10))
             {
-                
             }
         }
 
